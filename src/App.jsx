@@ -11,16 +11,14 @@ const SKILLS = [
   { icon:"🚀", cat:"Deployment",   items:["Render","Netlify","Streamlit Cloud"] },
   { icon:"✨", cat:"Gen AI Tools", items:["ChatGPT","Claude"] },
   { icon:"🧠", cat:"Soft Skills",  items:["Problem Solving","Communication","Teamwork","Adaptability"] },
-
- 
 ];
 
 const PROJECTS = [
-  { tag:"Machine Learning · Flask · Live", live:true, name:"Telecom Customer Churn Prediction", desc:"End-to-end ML web app predicting telecom customer churn with AI-driven retention strategies based on risk classification.", stack:["Python","Flask","Scikit-learn","SQLite","Groq API"], link:"https://telecom-churn-prediction-system.onrender.com/login" },
-  { tag:"Healthcare · Streamlit · Live", live:true, name:"Hospital Patient Classification", desc:"ML solution classifying hospital patients via anomaly detection and feature analysis to improve patient categorization.", stack:["Python","Pandas","NumPy","Scikit-Learn","Streamlit"], link:"https://hospital-patient-classification-6exvrmfbjqordnfvyiy7us.streamlit.app/" },
+  { tag:"CRM · ML · Live", live:true, name:"Telecom Customer Churn Prediction", desc:"End-to-end ML web app predicting telecom customer churn with AI-driven retention strategies based on risk classification.", stack:["Python","Flask","Scikit-learn","SQLite","Groq API"], link:"https://telecom-churn-prediction-system.onrender.com/login" },
+  { tag:"Healthcare · ML · Live", live:true, name:"Hospital Patient Classification", desc:"ML solution classifying hospital patients via anomaly detection and feature analysis to improve patient categorization.", stack:["Python","Pandas","NumPy","Scikit-Learn","Streamlit"], link:"https://hospital-patient-classification-6exvrmfbjqordnfvyiy7us.streamlit.app/" },
+  { tag:"Healthcare · ML · Live", live:true, name:"Smart Hospital Decision Support System", desc:"Intelligent based healthcare platform predicting patient readmission, estimating hospital length of stay, assessing respiratory conditions, and analyzing patient outcomes using ML.", stack:["Python","Streamlit","Scikit-learn","Pandas","NumPy","Joblib"], link:"https://smart-hospital-decision-support-system-z2o8mfveatydsd2ahleedc.streamlit.app/" },
   { tag:"Mobile App · Flutter · Firebase", live:false, name:"Campus Polling App", desc:"Cross-platform mobile polling app for university communities with real-time vote tallying using Firebase backend.", stack:["Flutter","Firebase","Dart"], link:"https://github.com/shameee09" },
   { tag:"MERN Stack · Web", live:false, name:"To-Do List App", desc:"Full-featured task management app with add, edit, delete and mark-complete functionality with persistent state management.", stack:["React","JavaScript","CSS"], link:"https://github.com/shameee09" },
-  { tag:"Mobile App · Gen AI", live:false, name:"Intelligent Fashion Recommendation App", desc:"Flutter app giving outfit suggestions based on user mood (Hugging Face) and horoscope (Aztro API) with e-commerce features.", stack:["Flutter","Firebase","Hugging Face API","Aztro API"], link:"https://github.com/shameee09" },
 ];
 
 const EDUCATION = [
@@ -33,6 +31,17 @@ const CONTACTS = [
   { icon:"💼", lbl:"LinkedIn", val:"linkedin.com/in/shameem--banu",  href:"https://www.linkedin.com/in/shameem--banu" },
   { icon:"🐙", lbl:"GitHub",   val:"github.com/shameee09",           href:"https://github.com/shameee09" },
   { icon:"📍", lbl:"Location", val:"Villupuram, Tamil Nadu, India",   href:null },
+];
+
+const ACHIEVEMENTS = [
+  {
+    title:"Spark Learner — Level I",
+    org:"Hope Artificial Intelligence Pvt. Ltd.",
+    date:"2026",
+    desc:"Awarded the Spark Learner Badge (Level I) for demonstrating dedication and progress in the Applied AI & Data Science program.",
+    color:"#7c3aed",
+    badge:"/spark-badge.jpeg",
+  },
 ];
 
 // ── FADE IN ───────────────────────────────────────────────
@@ -80,7 +89,7 @@ function BackToTop() {
 function useActiveSection() {
   const [active, setActive] = useState('about');
   useEffect(() => {
-    const sections = ["about","skills","experience","projects","education","contact"];
+    const sections = ["about","skills","experience","projects","education","achievements","contact"];
     const onScroll = () => {
       for (const id of sections) {
         const el = document.getElementById(id);
@@ -105,7 +114,7 @@ function Pill({ text }) {
 function Nav() {
   const [open, setOpen] = useState(false);
   const active = useActiveSection();
-  const links = ["About","Skills","Experience","Projects","Education","Contact"];
+  const links = ["About","Skills","Experience","Projects","Education","Achievements","Contact"];
   return (
     <nav>
       <div className="nav-inner">
@@ -177,17 +186,17 @@ function Hero() {
           <div>
             <div className="hero-tag">Available for full-time roles</div>
             <h1 className="hero-name">Shameem <span className="highlight">Banu</span></h1>
-            <p className="hero-role"> <span className="typed">{typed}</span><span style={{color:'var(--cyan)'}}>_</span></p>
+            <p className="hero-role"><span className="typed">{typed}</span><span style={{color:'var(--cyan)'}}>_</span></p>
           </div>
         </div>
-        <p className="hero-desc">Aspiring Data Science & AI Engineer with hands-on experience in Machine Learning, intelligent app development, and deploying real-world AI solutions.</p>
+        <p className="hero-desc">Aspiring AI Engineer with hands-on experience in Machine Learning,Data Science and intelligent app development and deploying real-world AI solutions.</p>
         <div className="hero-btns">
           <a href="#projects" className="btn-glow">View Projects</a>
           <a href="https://github.com/shameee09" target="_blank" rel="noreferrer" className="btn-ghost">GitHub</a>
           <a href="https://www.linkedin.com/in/shameem--banu" target="_blank" rel="noreferrer" className="btn-ghost">LinkedIn</a>
         </div>
         <div className="stats-row">
-          {[["5+","Projects Built"],["1","Internship"],["10+","Technologies"],["2026","Graduating"]].map(([n,l]) => (
+          {[["6+","Projects Built"],["1","Internship"],["10+","Technologies"],["2026","Graduating"]].map(([n,l]) => (
             <div className="stat" key={l}>
               <div className="stat-num"><span>{n}</span></div>
               <div className="stat-lbl">{l}</div>
@@ -338,7 +347,7 @@ function Education() {
     <section id="education" className="sec">
       <div className="sec-inner">
         <div className="sec-head">
-          <p className="sec-eyebrow"> academic background</p>
+          <p className="sec-eyebrow">academic background</p>
           <h2 className="sec-title">Education & Training</h2>
           <div className="sec-line"/>
         </div>
@@ -388,6 +397,64 @@ function Education() {
               <div className="act-item">National Service Scheme (NSS) — Volunteer</div>
             </div>
           </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── ACHIEVEMENTS ──────────────────────────────────────────
+function Achievements() {
+  return (
+    <section id="achievements" className="sec sec-alt">
+      <div className="sec-inner">
+        <div className="sec-head">
+          <p className="sec-eyebrow">badges & awards</p>
+          <h2 className="sec-title">Achievements</h2>
+          <div className="sec-line"/>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'1.5rem'}}>
+          {ACHIEVEMENTS.map((a,i) => (
+            <FadeIn key={a.title} delay={i*0.1}>
+              <div style={{
+                background:'var(--card)',
+                border:'1px solid var(--border)',
+                borderRadius:14,
+                padding:'1.8rem',
+                display:'flex',
+                gap:'1.4rem',
+                alignItems:'flex-start',
+                transition:'border-color .25s,transform .25s',
+              }}
+              onMouseOver={e=>e.currentTarget.style.borderColor='var(--purple)'}
+              onMouseOut={e=>e.currentTarget.style.borderColor='var(--border)'}
+              >
+                {/* Real Badge Image */}
+                <div style={{
+                  width:90,height:90,
+                  borderRadius:'50%',
+                  flexShrink:0,
+                  overflow:'hidden',
+                  boxShadow:`0 0 30px ${a.color}80`,
+                  border:'3px solid var(--purple)',
+                }}>
+                  <img
+                    src={a.badge}
+                    alt={a.title}
+                    style={{width:'100%',height:'100%',objectFit:'cover'}}
+                  />
+                </div>
+                <div>
+                  <div style={{display:'flex',alignItems:'center',gap:'0.7rem',flexWrap:'wrap',marginBottom:'0.3rem'}}>
+                    <span style={{fontWeight:700,color:'var(--white)',fontSize:'1rem'}}>{a.title}</span>
+                    <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.7rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.5rem',borderRadius:'4px'}}>{a.date}</span>
+                  </div>
+                  <div style={{fontFamily:"'Fira Code',monospace",fontSize:'0.78rem',color:'var(--purple-lt)',marginBottom:'0.6rem'}}>{a.org}</div>
+                  <p style={{fontSize:'0.85rem',color:'#94a3b8',lineHeight:1.7}}>{a.desc}</p>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
         </div>
       </div>
     </section>
@@ -444,7 +511,7 @@ function Contact() {
 // ── FOOTER ────────────────────────────────────────────────
 function Footer() {
   return (
-    <footer>&lt; built by <span>Shameem Banu</span>  -2026 /&gt;</footer>
+    <footer>&lt; built by <span>Shameem Banu</span> -2026 /&gt;</footer>
   );
 }
 
@@ -460,6 +527,7 @@ export default function App() {
       <Experience/>
       <Projects/>
       <Education/>
+      <Achievements/>
       <Contact/>
       <Footer/>
       <BackToTop/>
