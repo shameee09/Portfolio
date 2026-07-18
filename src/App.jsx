@@ -7,7 +7,7 @@ const SKILLS = [
   { icon:"🗄️", cat:"Databases",    items:["MySQL","SQLite","Firebase","MongoDB"] },
   { icon:"📊", cat:"Data Visualization",items:["Matplotlib","Tableau","Data Studio","Plotly"] },
   { icon:"⚡", cat:"Frameworks",   items:["Flask","Streamlit","Pandas","NumPy","Flutter","Express.js","React","Node.js"] },
-  { icon:"🛠️", cat:"Dev Tools",    items:["GitHub","VS Code","Jupyter","Google Colab"] },
+  { icon:"🛠️", cat:"Dev Tools",    items:["GitHub","VS Code","Jupyter","Google Colab","Android Studio","MySQL Workbench"] },
   { icon:"🚀", cat:"Deployment",   items:["Render","Netlify","Streamlit Cloud"] },
   { icon:"✨", cat:"Gen AI Tools", items:["ChatGPT","Claude"] },
   { icon:"🧠", cat:"Soft Skills",  items:["Problem Solving","Communication","Teamwork","Adaptability"] },
@@ -377,7 +377,7 @@ function Education() {
               {/* 1 Million Prompters */}
               <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem'}}>
                 <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
-                  <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>1 Million Prompters — Certificate of Completion</span>
+                  <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>1 Million Prompters — AI Prompt Engineering</span>
                   <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>2026</span>
                 </div>
                 <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.6rem',fontFamily:"'Fira Code',monospace"}}>Dubai Future Foundation · Dubai Centre for AI</div>
