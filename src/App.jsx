@@ -19,6 +19,7 @@ const PROJECTS = [
   { tag:"Healthcare · ML · Live", live:true, name:"Smart Hospital Decision Support System", desc:"Intelligent based healthcare platform predicting patient readmission, estimating hospital length of stay, assessing respiratory conditions, and analyzing patient outcomes using ML.", stack:["Python","Streamlit","Scikit-learn","Pandas","NumPy","Joblib"], link:"https://smart-hospital-decision-support-system-z2o8mfveatydsd2ahleedc.streamlit.app/" },
   { tag:"Mobile App · Flutter · Firebase", live:false, name:"Campus Polling App", desc:"Cross-platform mobile polling app for university communities with real-time vote tallying using Firebase backend.", stack:["Flutter","Firebase","Dart"], link:"https://github.com/shameee09" },
   { tag:"MERN Stack · Web", live:false, name:"To-Do List App", desc:"Full-featured task management app with add, edit, delete and mark-complete functionality with persistent state management.", stack:["React","JavaScript","CSS"], link:"https://github.com/shameee09" },
+  { tag:"Mobile App · Gen AI", live:false, name:"Intelligent Fashion Recommendation App", desc:"Flutter app giving outfit suggestions based on user mood (Hugging Face) and horoscope (Aztro API) with e-commerce features.", stack:["Flutter","Firebase","Hugging Face API","Aztro API"], link:"https://github.com/shameee09" },
 ];
 
 const EDUCATION = [
@@ -71,16 +72,8 @@ function BackToTop() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   return show ? (
-    <button
-      onClick={() => window.scrollTo({top:0, behavior:'smooth'})}
-      style={{
-        position:'fixed', bottom:'2rem', right:'2rem', zIndex:999,
-        width:44, height:44, borderRadius:'50%',
-        background:'linear-gradient(135deg,var(--purple),var(--cyan))',
-        border:'none', cursor:'pointer', color:'#fff', fontSize:'1.2rem',
-        boxShadow:'0 0 20px rgba(124,58,237,0.5)',
-        display:'flex', alignItems:'center', justifyContent:'center',
-      }}
+    <button onClick={() => window.scrollTo({top:0, behavior:'smooth'})}
+      style={{position:'fixed',bottom:'2rem',right:'2rem',zIndex:999,width:44,height:44,borderRadius:'50%',background:'linear-gradient(135deg,var(--purple),var(--cyan))',border:'none',cursor:'pointer',color:'#fff',fontSize:'1.2rem',boxShadow:'0 0 20px rgba(124,58,237,0.5)',display:'flex',alignItems:'center',justifyContent:'center'}}
     >↑</button>
   ) : null;
 }
@@ -105,7 +98,6 @@ function useActiveSection() {
   return active;
 }
 
-// ── PILL ──────────────────────────────────────────────────
 function Pill({ text }) {
   return <span className="pill">{text}</span>;
 }
@@ -122,12 +114,7 @@ function Nav() {
         <ul className="nav-links">
           {links.map(n => (
             <li key={n}>
-              <a href={`#${n.toLowerCase()}`} style={{
-                color: active===n.toLowerCase() ? 'var(--cyan-lt)' : 'var(--muted)',
-                borderBottom: active===n.toLowerCase() ? '2px solid var(--cyan)' : '2px solid transparent',
-                paddingBottom:'2px', transition:'all .2s', textDecoration:'none',
-                fontSize:'0.82rem', fontWeight:500, letterSpacing:'0.06em', textTransform:'uppercase',
-              }}>{n}</a>
+              <a href={`#${n.toLowerCase()}`} style={{color:active===n.toLowerCase()?'var(--cyan-lt)':'var(--muted)',borderBottom:active===n.toLowerCase()?'2px solid var(--cyan)':'2px solid transparent',paddingBottom:'2px',transition:'all .2s',textDecoration:'none',fontSize:'0.82rem',fontWeight:500,letterSpacing:'0.06em',textTransform:'uppercase'}}>{n}</a>
             </li>
           ))}
         </ul>
@@ -142,8 +129,7 @@ function Nav() {
         <div style={{background:'rgba(8,12,20,0.98)',borderTop:'1px solid var(--border)',display:'flex',flexDirection:'column',padding:'1rem 2rem',gap:'1rem'}}>
           {links.map(n => (
             <a key={n} href={`#${n.toLowerCase()}`} onClick={()=>setOpen(false)}
-              style={{color:active===n.toLowerCase()?'var(--cyan-lt)':'var(--text)',textDecoration:'none',fontSize:'0.95rem',fontWeight:500}}
-            >{n}</a>
+              style={{color:active===n.toLowerCase()?'var(--cyan-lt)':'var(--text)',textDecoration:'none',fontSize:'0.95rem',fontWeight:500}}>{n}</a>
           ))}
         </div>
       )}
@@ -189,7 +175,7 @@ function Hero() {
             <p className="hero-role"><span className="typed">{typed}</span><span style={{color:'var(--cyan)'}}>_</span></p>
           </div>
         </div>
-        <p className="hero-desc">Aspiring AI Engineer with hands-on experience in Machine Learning,Data Science and intelligent app development and deploying real-world AI solutions.</p>
+        <p className="hero-desc">Aspiring AI Engineer with hands-on experience in Machine Learning, Data Science and intelligent app development and deploying real-world AI solutions.</p>
         <div className="hero-btns">
           <a href="#projects" className="btn-glow">View Projects</a>
           <a href="https://github.com/shameee09" target="_blank" rel="noreferrer" className="btn-ghost">GitHub</a>
@@ -308,14 +294,7 @@ function Projects() {
         </div>
         <div style={{display:'flex',gap:'0.8rem',marginBottom:'2rem',flexWrap:'wrap'}}>
           {filters.map(f => (
-            <button key={f} onClick={() => setFilter(f)} style={{
-              padding:'0.4rem 1.2rem', borderRadius:100,
-              border: filter===f ? 'none' : '1px solid var(--border)',
-              background: filter===f ? 'linear-gradient(135deg,var(--purple),var(--cyan))' : 'transparent',
-              color: filter===f ? '#fff' : 'var(--muted)',
-              cursor:'pointer', fontSize:'0.82rem', fontWeight:600,
-              fontFamily:"'Space Grotesk',sans-serif", transition:'all .2s',
-            }}>{f}</button>
+            <button key={f} onClick={() => setFilter(f)} style={{padding:'0.4rem 1.2rem',borderRadius:100,border:filter===f?'none':'1px solid var(--border)',background:filter===f?'linear-gradient(135deg,var(--purple),var(--cyan))':'transparent',color:filter===f?'#fff':'var(--muted)',cursor:'pointer',fontSize:'0.82rem',fontWeight:600,fontFamily:"'Space Grotesk',sans-serif",transition:'all .2s'}}>{f}</button>
           ))}
         </div>
         <div className="proj-grid">
@@ -373,23 +352,51 @@ function Education() {
               </div>
             </FadeIn>
           ))}
+
+          {/* ── CERTIFICATIONS ── */}
           <FadeIn delay={0.2}>
             <div className="act-card">
               <h4 style={{color:'var(--cyan)',marginBottom:'1rem',fontSize:'0.75rem',letterSpacing:'0.12em',textTransform:'uppercase',fontFamily:"'Fira Code',monospace"}}>🏆 Certifications</h4>
-              <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
-                <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>Deloitte Australia – Data Analytics Job Simulation</span>
-                <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>June 2026</span>
+
+              {/* Deloitte */}
+              <div style={{marginBottom:'1.5rem'}}>
+                <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
+                  <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>Deloitte Australia – Data Analytics Job Simulation</span>
+                  <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>June 2026</span>
+                </div>
+                <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.6rem',fontFamily:"'Fira Code',monospace"}}>Forage</div>
+                <ul style={{listStyle:'none'}}>
+                  {["Analyzed telemetry data using Tableau and built interactive dashboards.","Identified operational downtime trends and generated business insights.","Applied forensic data analysis to investigate gender pay equality."].map((p,i) => (
+                    <li key={i} style={{display:'flex',gap:'0.6rem',color:'#94a3b8',fontSize:'0.83rem',lineHeight:1.7,marginBottom:'0.15rem'}}>
+                      <span style={{color:'var(--cyan)',flexShrink:0}}>▸</span>{p}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.6rem',fontFamily:"'Fira Code',monospace"}}>Forage</div>
-              <ul style={{listStyle:'none'}}>
-                {["Analyzed telemetry data using Tableau and built interactive dashboards.","Identified operational downtime trends and generated business insights.","Applied forensic data analysis to investigate gender pay equality."].map((p,i) => (
-                  <li key={i} style={{display:'flex',gap:'0.6rem',color:'#94a3b8',fontSize:'0.83rem',lineHeight:1.7,marginBottom:'0.15rem'}}>
-                    <span style={{color:'var(--cyan)',flexShrink:0}}>▸</span>{p}
-                  </li>
-                ))}
-              </ul>
+
+              {/* 1 Million Prompters */}
+              <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem'}}>
+                <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
+                  <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>1 Million Prompters — Certificate of Completion</span>
+                  <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>2026</span>
+                </div>
+                <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.6rem',fontFamily:"'Fira Code',monospace"}}>Dubai Future Foundation · Dubai Centre for AI</div>
+                <ul style={{listStyle:'none'}}>
+                  {[
+                    "Completed the One Million Prompters initiative by HH Sheikh Hamdan bin Mohammed bin Rashid Al Maktoum, Crown Prince of Dubai.",
+                    "Focused on developing prompt engineering skills for AI systems.",
+                    "Aligned with the Dubai Universal Blueprint for Artificial Intelligence.",
+                  ].map((p,i) => (
+                    <li key={i} style={{display:'flex',gap:'0.6rem',color:'#94a3b8',fontSize:'0.83rem',lineHeight:1.7,marginBottom:'0.15rem'}}>
+                      <span style={{color:'var(--cyan)',flexShrink:0}}>▸</span>{p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
             </div>
           </FadeIn>
+
           <FadeIn delay={0.3}>
             <div className="act-card" style={{marginTop:'1.5rem'}}>
               <h4>Leadership & Activities</h4>
@@ -416,33 +423,12 @@ function Achievements() {
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'1.5rem'}}>
           {ACHIEVEMENTS.map((a,i) => (
             <FadeIn key={a.title} delay={i*0.1}>
-              <div style={{
-                background:'var(--card)',
-                border:'1px solid var(--border)',
-                borderRadius:14,
-                padding:'1.8rem',
-                display:'flex',
-                gap:'1.4rem',
-                alignItems:'flex-start',
-                transition:'border-color .25s,transform .25s',
-              }}
-              onMouseOver={e=>e.currentTarget.style.borderColor='var(--purple)'}
-              onMouseOut={e=>e.currentTarget.style.borderColor='var(--border)'}
+              <div style={{background:'var(--card)',border:'1px solid var(--border)',borderRadius:14,padding:'1.8rem',display:'flex',gap:'1.4rem',alignItems:'flex-start',transition:'border-color .25s'}}
+                onMouseOver={e=>e.currentTarget.style.borderColor='var(--purple)'}
+                onMouseOut={e=>e.currentTarget.style.borderColor='var(--border)'}
               >
-                {/* Real Badge Image */}
-                <div style={{
-                  width:90,height:90,
-                  borderRadius:'50%',
-                  flexShrink:0,
-                  overflow:'hidden',
-                  boxShadow:`0 0 30px ${a.color}80`,
-                  border:'3px solid var(--purple)',
-                }}>
-                  <img
-                    src={a.badge}
-                    alt={a.title}
-                    style={{width:'100%',height:'100%',objectFit:'cover'}}
-                  />
+                <div style={{width:110,height:110,borderRadius:'50%',flexShrink:0,overflow:'hidden',boxShadow:`0 0 30px ${a.color}80`,border:'3px solid var(--purple)'}}>
+                  <img src={a.badge} alt={a.title} style={{width:'100%',height:'100%',objectFit:'contain'}}/>
                 </div>
                 <div>
                   <div style={{display:'flex',alignItems:'center',gap:'0.7rem',flexWrap:'wrap',marginBottom:'0.3rem'}}>
