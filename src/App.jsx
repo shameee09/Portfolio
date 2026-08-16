@@ -21,7 +21,7 @@ const PROJECTS = [
   { tag:"Deep Learning · YOLO · Live", live:true, name:"Construction Safety Detection", desc:"Intelligent based computer vision app detecting safety helmets and high-visibility vests in construction-site images using a trained YOLO11 object detection model with interactive safety assessment dashboard.", stack:["Python","YOLO11","Ultralytics","PyTorch","NumPy","Streamlit"], link:"https://construction-site-safety-detection-8bug9vq32vm8sla3yperfw.streamlit.app/" },
   { tag:"Mobile App · Flutter · Firebase", live:false, name:"Campus Polling App", desc:"Cross-platform mobile polling app for university communities with real-time vote tallying using Firebase backend.", stack:["Flutter","Firebase","Dart"], link:"https://github.com/shameee09" },
   { tag:"MERN Stack · Web", live:false, name:"To-Do List App", desc:"Full-featured task management app with add, edit, delete and mark-complete functionality with persistent state management.", stack:["React","JavaScript","CSS"], link:"https://github.com/shameee09" },
-  { tag:"Mobile App · Gen AI", live:false, name:"Intelligent Fashion Recommendation App", desc:"Flutter app giving outfit suggestions based on user mood (Hugging Face) and horoscope (Aztro API) with e-commerce features.", stack:["Flutter","Firebase","Hugging Face API","Aztro API"], link:"https://github.com/shameee09" },
+  { tag:"Mobile App ", live:false, name:"Intelligent Fashion Recommendation App", desc:"Flutter app giving outfit suggestions based on user mood (Hugging Face) and horoscope (Aztro API) with e-commerce features.", stack:["Flutter","Firebase","Hugging Face API","Aztro API"], link:"https://github.com/shameee09" },
 ];
 
 const EDUCATION = [
@@ -284,7 +284,7 @@ function Experience() {
 // ── PROJECTS ──────────────────────────────────────────────
 function Projects() {
   const [filter, setFilter] = useState('All');
-  const filters = ['All','ML','Deep Learning','Mobile','Web'];
+  const filters = ['All','Machine Learning','Deep Learning','Mobile','Web'];
   const filtered = filter==='All' ? PROJECTS : PROJECTS.filter(p => p.tag.toLowerCase().includes(filter.toLowerCase()));
   return (
     <section id="projects" className="sec sec-alt">
@@ -379,7 +379,7 @@ function Education() {
               <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem',marginBottom:'1.5rem'}}>
                 <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
                   <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>1 Million Prompters — AI Prompt Engineering</span>
-                  <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>2026</span>
+                  <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>July 2026</span>
                 </div>
                 <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.6rem',fontFamily:"'Fira Code',monospace"}}>Dubai Future Foundation · Dubai Centre for AI</div>
                 <ul style={{listStyle:'none'}}>
@@ -399,7 +399,7 @@ function Education() {
               <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem'}}>
                 <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
                   <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>Generative AI Essentials: Using LLMs to Work with Data</span>
-                  <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>2026</span>
+                  <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>August 2026</span>
                 </div>
                 <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.6rem',fontFamily:"'Fira Code',monospace"}}>IBM SkillsBuild</div>
                 <ul style={{listStyle:'none'}}>
