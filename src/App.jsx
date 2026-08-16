@@ -3,10 +3,10 @@ import './styles/global.css';
 
 const SKILLS = [
   { icon:"🐍", cat:"Programming",  items:["Python","SQL","Java"] },
-  { icon:"🤖", cat:"ML & AI",      items:["Scikit-Learn","TensorFlow","PyTorch","MLflow"] },
+  { icon:"🤖", cat:"ML & AI",      items:["Scikit-Learn","TensorFlow","Keras","PyTorch","MLflow","OpenCV"] },
   { icon:"🗄️", cat:"Databases",    items:["MySQL","SQLite","Firebase","MongoDB"] },
-  { icon:"📊", cat:"Data Visualization",items:["Matplotlib","Tableau","Data Studio","Plotly"] },
-  { icon:"⚡", cat:"Frameworks",   items:["Flask","Streamlit","Pandas","NumPy","Flutter","Express.js","React","Node.js"] },
+  { icon:"📊", cat:"Data Visualization",items:["Matplotlib","Tableau","Data Studio","PowerBI"] },
+  { icon:"⚡", cat:"Frameworks",   items:["Flask","Streamlit","Pandas","NumPy","Flutter","Express.js","React","Node.js","Tensorflow","Pytorch"] },
   { icon:"🛠️", cat:"Dev Tools",    items:["GitHub","VS Code","Jupyter","Google Colab","Android Studio","MySQL Workbench"] },
   { icon:"🚀", cat:"Deployment",   items:["Render","Netlify","Streamlit Cloud"] },
   { icon:"✨", cat:"Gen AI Tools", items:["ChatGPT","Claude"] },
@@ -16,7 +16,9 @@ const SKILLS = [
 const PROJECTS = [
   { tag:"CRM · ML · Live", live:true, name:"Telecom Customer Churn Prediction", desc:"End-to-end ML web app predicting telecom customer churn with AI-driven retention strategies based on risk classification.", stack:["Python","Flask","Scikit-learn","SQLite","Groq API"], link:"https://telecom-churn-prediction-system.onrender.com/login" },
   { tag:"Healthcare · ML · Live", live:true, name:"Hospital Patient Classification", desc:"ML solution classifying hospital patients via anomaly detection and feature analysis to improve patient categorization.", stack:["Python","Pandas","NumPy","Scikit-Learn","Streamlit"], link:"https://hospital-patient-classification-6exvrmfbjqordnfvyiy7us.streamlit.app/" },
-  { tag:"Healthcare · ML · Live", live:true, name:"Smart Hospital Decision Support System", desc:"Intelligent based healthcare platform predicting patient readmission, estimating hospital length of stay, assessing respiratory conditions, and analyzing patient outcomes using ML.", stack:["Python","Streamlit","Scikit-learn","Pandas","NumPy","Joblib"], link:"https://smart-hospital-decision-support-system-z2o8mfveatydsd2ahleedc.streamlit.app/" },
+  { tag:"Healthcare · ML · Live", live:true, name:"Smart Hospital Decision Support System", desc:"Intelligent healthcare platform predicting patient readmission, estimating hospital length of stay, assessing respiratory conditions, and analyzing patient outcomes using ML.", stack:["Python","Streamlit","Scikit-learn","Pandas","NumPy","Joblib"], link:"https://smart-hospital-decision-support-system-z2o8mfveatydsd2ahleedc.streamlit.app/" },
+  { tag:"Deep Learning · CV · Live", live:true, name:"Face Mask Compliance Screening System", desc:"Computer vision-based face mask detection system that captures images through a browser camera, detects multiple faces, and classifies each as Mask or No Mask with confidence scoring and automated compliance assessment.", stack:["Python","TensorFlow","Keras","OpenCV","NumPy","Streamlit"], link:"https://face-mask-detection-yqum2z76nympbrbx3peqql.streamlit.app/" },
+  { tag:"Deep Learning · YOLO · Live", live:true, name:"Construction Safety Detection", desc:"Intelligent based computer vision app detecting safety helmets and high-visibility vests in construction-site images using a trained YOLO11 object detection model with interactive safety assessment dashboard.", stack:["Python","YOLO11","Ultralytics","PyTorch","NumPy","Streamlit"], link:"https://construction-site-safety-detection-8bug9vq32vm8sla3yperfw.streamlit.app/" },
   { tag:"Mobile App · Flutter · Firebase", live:false, name:"Campus Polling App", desc:"Cross-platform mobile polling app for university communities with real-time vote tallying using Firebase backend.", stack:["Flutter","Firebase","Dart"], link:"https://github.com/shameee09" },
   { tag:"MERN Stack · Web", live:false, name:"To-Do List App", desc:"Full-featured task management app with add, edit, delete and mark-complete functionality with persistent state management.", stack:["React","JavaScript","CSS"], link:"https://github.com/shameee09" },
   { tag:"Mobile App · Gen AI", live:false, name:"Intelligent Fashion Recommendation App", desc:"Flutter app giving outfit suggestions based on user mood (Hugging Face) and horoscope (Aztro API) with e-commerce features.", stack:["Flutter","Firebase","Hugging Face API","Aztro API"], link:"https://github.com/shameee09" },
@@ -140,7 +142,7 @@ function Nav() {
 // ── HERO ──────────────────────────────────────────────────
 function Hero() {
   const [typed, setTyped] = useState('');
-  const roles = ["AI Engineer","Data Scientist","ML Developer","Problem Solver"];
+  const roles = ["AI Engineer","Data Scientist","ML Developer","Deep Learning Engineer","Problem Solver"];
   const ri = useRef(0), ci = useRef(0), del = useRef(false);
   useEffect(() => {
     let t;
@@ -175,14 +177,14 @@ function Hero() {
             <p className="hero-role"><span className="typed">{typed}</span><span style={{color:'var(--cyan)'}}>_</span></p>
           </div>
         </div>
-        <p className="hero-desc">Aspiring AI Engineer with hands-on experience in Machine Learning, Data Science and intelligent app development and deploying real-world AI solutions.</p>
+        <p className="hero-desc">Aspiring AI Engineer with hands-on experience in Machine Learning, Data Science, Deep Learning and intelligent app development and deploying real-world AI solutions.</p>
         <div className="hero-btns">
           <a href="#projects" className="btn-glow">View Projects</a>
           <a href="https://github.com/shameee09" target="_blank" rel="noreferrer" className="btn-ghost">GitHub</a>
           <a href="https://www.linkedin.com/in/shameem--banu" target="_blank" rel="noreferrer" className="btn-ghost">LinkedIn</a>
         </div>
         <div className="stats-row">
-          {[["6+","Projects Built"],["1","Internship"],["10+","Technologies"],["2026","Graduating"]].map(([n,l]) => (
+          {[["8+","Projects Built"],["1","Internship"],["10+","Technologies"],["2026","Graduating"]].map(([n,l]) => (
             <div className="stat" key={l}>
               <div className="stat-num"><span>{n}</span></div>
               <div className="stat-lbl">{l}</div>
@@ -282,7 +284,7 @@ function Experience() {
 // ── PROJECTS ──────────────────────────────────────────────
 function Projects() {
   const [filter, setFilter] = useState('All');
-  const filters = ['All','ML','Mobile','Web'];
+  const filters = ['All','ML','Deep Learning','Mobile','Web'];
   const filtered = filter==='All' ? PROJECTS : PROJECTS.filter(p => p.tag.toLowerCase().includes(filter.toLowerCase()));
   return (
     <section id="projects" className="sec sec-alt">
@@ -353,7 +355,6 @@ function Education() {
             </FadeIn>
           ))}
 
-          {/* ── CERTIFICATIONS ── */}
           <FadeIn delay={0.2}>
             <div className="act-card">
               <h4 style={{color:'var(--cyan)',marginBottom:'1rem',fontSize:'0.75rem',letterSpacing:'0.12em',textTransform:'uppercase',fontFamily:"'Fira Code',monospace"}}>🏆 Certifications</h4>
@@ -375,7 +376,7 @@ function Education() {
               </div>
 
               {/* 1 Million Prompters */}
-              <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem'}}>
+              <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem',marginBottom:'1.5rem'}}>
                 <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
                   <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>1 Million Prompters — AI Prompt Engineering</span>
                   <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>2026</span>
@@ -386,6 +387,26 @@ function Education() {
                     "Completed the One Million Prompters initiative by HH Sheikh Hamdan bin Mohammed bin Rashid Al Maktoum, Crown Prince of Dubai.",
                     "Focused on developing prompt engineering skills for AI systems.",
                     "Aligned with the Dubai Universal Blueprint for Artificial Intelligence.",
+                  ].map((p,i) => (
+                    <li key={i} style={{display:'flex',gap:'0.6rem',color:'#94a3b8',fontSize:'0.83rem',lineHeight:1.7,marginBottom:'0.15rem'}}>
+                      <span style={{color:'var(--cyan)',flexShrink:0}}>▸</span>{p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* IBM SkillsBuild */}
+              <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem'}}>
+                <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
+                  <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>Generative AI Essentials: Using LLMs to Work with Data</span>
+                  <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>2026</span>
+                </div>
+                <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.6rem',fontFamily:"'Fira Code',monospace"}}>IBM SkillsBuild</div>
+                <ul style={{listStyle:'none'}}>
+                  {[
+                    "Completed IBM SkillsBuild learning plan focused on Generative AI and Large Language Models.",
+                    "Gained foundational knowledge of working with data using AI and LLM-based approaches.",
+                    "Earned an IBM SkillsBuild digital credential and badge.",
                   ].map((p,i) => (
                     <li key={i} style={{display:'flex',gap:'0.6rem',color:'#94a3b8',fontSize:'0.83rem',lineHeight:1.7,marginBottom:'0.15rem'}}>
                       <span style={{color:'var(--cyan)',flexShrink:0}}>▸</span>{p}
@@ -420,18 +441,39 @@ function Achievements() {
           <h2 className="sec-title">Achievements</h2>
           <div className="sec-line"/>
         </div>
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'1.5rem'}}>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(320px,1fr))',gap:'1.5rem'}}>
           {ACHIEVEMENTS.map((a,i) => (
             <FadeIn key={a.title} delay={i*0.1}>
-              <div style={{background:'var(--card)',border:'1px solid var(--border)',borderRadius:14,padding:'1.8rem',display:'flex',gap:'1.4rem',alignItems:'flex-start',transition:'border-color .25s'}}
+              <div style={{background:'var(--card)',border:'1px solid var(--border)',borderRadius:14,padding:'2rem',display:'flex',gap:'1.6rem',alignItems:'center',transition:'border-color .25s'}}
                 onMouseOver={e=>e.currentTarget.style.borderColor='var(--purple)'}
                 onMouseOut={e=>e.currentTarget.style.borderColor='var(--border)'}
               >
-                <div style={{width:110,height:110,borderRadius:'50%',flexShrink:0,overflow:'hidden',boxShadow:`0 0 30px ${a.color}80`,border:'3px solid var(--purple)'}}>
-                  <img src={a.badge} alt={a.title} style={{width:'100%',height:'100%',objectFit:'contain'}}/>
+                {/* Badge — fixed size, no crop */}
+                <div style={{
+                  width:120,height:120,
+                  borderRadius:'50%',
+                  flexShrink:0,
+                  display:'flex',
+                  alignItems:'center',
+                  justifyContent:'center',
+                  background:'#1a0a3a',
+                  boxShadow:`0 0 30px ${a.color}90`,
+                  border:`3px solid ${a.color}`,
+                  padding:6,
+                }}>
+                  <img
+                    src={a.badge}
+                    alt={a.title}
+                    style={{
+                      width:'100%',
+                      height:'100%',
+                      objectFit:'contain',
+                      borderRadius:'50%',
+                    }}
+                  />
                 </div>
-                <div>
-                  <div style={{display:'flex',alignItems:'center',gap:'0.7rem',flexWrap:'wrap',marginBottom:'0.3rem'}}>
+                <div style={{flex:1}}>
+                  <div style={{display:'flex',alignItems:'center',gap:'0.7rem',flexWrap:'wrap',marginBottom:'0.4rem'}}>
                     <span style={{fontWeight:700,color:'var(--white)',fontSize:'1rem'}}>{a.title}</span>
                     <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.7rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.5rem',borderRadius:'4px'}}>{a.date}</span>
                   </div>
