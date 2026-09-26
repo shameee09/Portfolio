@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './styles/global.css';
-
+ 
 const SKILLS = [
   { icon:"🐍", cat:"Programming",  items:["Python","SQL","Java"] },
   { icon:"🤖", cat:"ML & AI",      items:["Scikit-Learn","TensorFlow","Keras","PyTorch","MLflow","OpenCV"] },
