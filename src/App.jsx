@@ -195,7 +195,7 @@ function Hero() {
           <a href="https://www.linkedin.com/in/shameem--banu" target="_blank" rel="noreferrer" className="btn-ghost">LinkedIn</a>
         </div>
         <div className="stats-row">
-          {[["8+","Projects Built"],["1","Internship"],["10+","Technologies"],["2026","Graduating"]].map(([n,l]) => (
+          {[["8+","Projects Built"],["1","Internship"],["10+","Technologies"],["2027","Graduating"]].map(([n,l]) => (
             <div className="stat" key={l}>
               <div className="stat-num"><span>{n}</span></div>
               <div className="stat-lbl">{l}</div>
