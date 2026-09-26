@@ -33,7 +33,7 @@ const CONTACTS = [
   { icon:"📧", lbl:"Email",    val:"shameembanuinfotech@gmail.com", href:"mailto:shameembanuinfotech@gmail.com" },
   { icon:"💼", lbl:"LinkedIn", val:"linkedin.com/in/shameem--banu",  href:"https://www.linkedin.com/in/shameem--banu" },
   { icon:"🐙", lbl:"GitHub",   val:"github.com/shameee09",           href:"https://github.com/shameee09" },
-  { icon:"📍", lbl:"Location", val:"Villupuram, Tamil Nadu, India",   href:null },
+  //{ icon:"📍", lbl:"Location", val:"Villupuram, Tamil Nadu, India",   href:null },
 ];
 
 const ACHIEVEMENTS = [
@@ -44,7 +44,7 @@ const ACHIEVEMENTS = [
     desc:"Awarded the Spark Learner Badge (Level I) for demonstrating dedication and progress in the Applied AI & Data Science program.",
     color:"#7c3aed",
     badge:"/spark-badge.jpeg",
-    isCert:false,
+    type:"badge",
   },
   {
     title:"Growth Mover — Level II",
@@ -53,16 +53,16 @@ const ACHIEVEMENTS = [
     desc:"Awarded the Growth Mover Badge (Level II) for demonstrating consistent growth, active participation, and advancing skills in the Applied AI & Data Science program.",
     color:"#f59e0b",
     badge:"/growth-badge.png",
-    isCert:false,
+    type:"badge",
   },
   {
     title:"Certificate of Excellence",
     org:"Hope Artificial Intelligence Pvt. Ltd. · ISO 9001:2015 Certified",
     date:"2026",
-    desc:"Awarded Certificate of Excellence in recognition of exceptional contribution in presenting 'AI in Healthcare' — Smart Hospital Decision Support System Machine Learning Project. Certificate ID: HOPEAIDP046",
+    desc:"Awarded in recognition of exceptional contribution in presenting 'AI in Healthcare' — Smart Hospital Decision Support System ML Project. Certificate ID: HOPEAIDP046",
     color:"#0ea5e9",
-    badge:null,
-    isCert:true,
+    badge:"/hope-cert.jpg",
+    type:"cert",
   },
 ];
 
@@ -84,7 +84,6 @@ function FadeIn({ children, delay=0 }) {
   return <div ref={ref}>{children}</div>;
 }
 
-// ── BACK TO TOP ───────────────────────────────────────────
 function BackToTop() {
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -99,7 +98,6 @@ function BackToTop() {
   ) : null;
 }
 
-// ── ACTIVE NAV HOOK ───────────────────────────────────────
 function useActiveSection() {
   const [active, setActive] = useState('about');
   useEffect(() => {
@@ -119,11 +117,8 @@ function useActiveSection() {
   return active;
 }
 
-function Pill({ text }) {
-  return <span className="pill">{text}</span>;
-}
+function Pill({ text }) { return <span className="pill">{text}</span>; }
 
-// ── NAV ───────────────────────────────────────────────────
 function Nav() {
   const [open, setOpen] = useState(false);
   const active = useActiveSection();
@@ -139,8 +134,7 @@ function Nav() {
             </li>
           ))}
         </ul>
-        <button onClick={() => setOpen(!open)} className="hamburger"
-          style={{display:'none',background:'none',border:'none',cursor:'pointer',flexDirection:'column',gap:5,padding:4}}>
+        <button onClick={() => setOpen(!open)} className="hamburger" style={{display:'none',background:'none',border:'none',cursor:'pointer',flexDirection:'column',gap:5,padding:4}}>
           <span style={{display:'block',width:22,height:2,background:'var(--text)',transition:'all .3s',transform:open?'rotate(45deg) translate(5px,5px)':'none'}}/>
           <span style={{display:'block',width:22,height:2,background:'var(--text)',transition:'all .3s',opacity:open?0:1}}/>
           <span style={{display:'block',width:22,height:2,background:'var(--text)',transition:'all .3s',transform:open?'rotate(-45deg) translate(5px,-5px)':'none'}}/>
@@ -149,8 +143,7 @@ function Nav() {
       {open && (
         <div style={{background:'rgba(8,12,20,0.98)',borderTop:'1px solid var(--border)',display:'flex',flexDirection:'column',padding:'1rem 2rem',gap:'1rem'}}>
           {links.map(n => (
-            <a key={n} href={`#${n.toLowerCase()}`} onClick={()=>setOpen(false)}
-              style={{color:active===n.toLowerCase()?'var(--cyan-lt)':'var(--text)',textDecoration:'none',fontSize:'0.95rem',fontWeight:500}}>{n}</a>
+            <a key={n} href={`#${n.toLowerCase()}`} onClick={()=>setOpen(false)} style={{color:active===n.toLowerCase()?'var(--cyan-lt)':'var(--text)',textDecoration:'none',fontSize:'0.95rem',fontWeight:500}}>{n}</a>
           ))}
         </div>
       )}
@@ -158,7 +151,6 @@ function Nav() {
   );
 }
 
-// ── HERO ──────────────────────────────────────────────────
 function Hero() {
   const [typed, setTyped] = useState('');
   const roles = ["AI Engineer","Data Scientist","ML Developer","Deep Learning Engineer","Problem Solver"];
@@ -215,7 +207,6 @@ function Hero() {
   );
 }
 
-// ── SKILLS ────────────────────────────────────────────────
 function Skills() {
   return (
     <section id="skills" className="sec sec-alt">
@@ -243,7 +234,6 @@ function Skills() {
   );
 }
 
-// ── EXPERIENCE ────────────────────────────────────────────
 function Experience() {
   return (
     <section id="experience" className="sec">
@@ -300,7 +290,6 @@ function Experience() {
   );
 }
 
-// ── PROJECTS ──────────────────────────────────────────────
 function Projects() {
   const [filter, setFilter] = useState('All');
   const filters = ['All','Machine Learning','Deep Learning','Mobile','Web'];
@@ -341,7 +330,6 @@ function Projects() {
   );
 }
 
-// ── EDUCATION ─────────────────────────────────────────────
 function Education() {
   return (
     <section id="education" className="sec">
@@ -373,12 +361,9 @@ function Education() {
               </div>
             </FadeIn>
           ))}
-
           <FadeIn delay={0.2}>
             <div className="act-card">
               <h4 style={{color:'var(--cyan)',marginBottom:'1rem',fontSize:'0.75rem',letterSpacing:'0.12em',textTransform:'uppercase',fontFamily:"'Fira Code',monospace"}}>🏆 Certifications</h4>
-
-              {/* Deloitte */}
               <div style={{marginBottom:'1.5rem'}}>
                 <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
                   <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>Deloitte Australia – Data Analytics Job Simulation</span>
@@ -393,8 +378,6 @@ function Education() {
                   ))}
                 </ul>
               </div>
-
-              {/* 1 Million Prompters */}
               <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem',marginBottom:'1.5rem'}}>
                 <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
                   <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>1 Million Prompters — AI Prompt Engineering</span>
@@ -412,8 +395,6 @@ function Education() {
                   ))}
                 </ul>
               </div>
-
-              {/* IBM SkillsBuild */}
               <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem'}}>
                 <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
                   <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>Generative AI Essentials: Using LLMs to Work with Data</span>
@@ -433,7 +414,6 @@ function Education() {
               </div>
             </div>
           </FadeIn>
-
           <FadeIn delay={0.3}>
             <div className="act-card" style={{marginTop:'1.5rem'}}>
               <h4>Leadership & Activities</h4>
@@ -457,31 +437,33 @@ function Achievements() {
           <h2 className="sec-title">Achievements</h2>
           <div className="sec-line"/>
         </div>
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(320px,1fr))',gap:'1.5rem'}}>
+        <div style={{display:'flex',flexDirection:'column',gap:'1.5rem'}}>
           {ACHIEVEMENTS.map((a,i) => (
             <FadeIn key={a.title} delay={i*0.1}>
-              <div style={{background:'var(--card)',border:'1px solid var(--border)',borderRadius:14,padding:'2rem',display:'flex',gap:'1.6rem',alignItems:'center',transition:'border-color .25s',height:'100%'}}
+              <div style={{background:'var(--card)',border:'1px solid var(--border)',borderRadius:14,padding:'1.8rem',display:'flex',gap:'2rem',alignItems:'center',transition:'border-color .25s',flexWrap:'wrap'}}
                 onMouseOver={e=>e.currentTarget.style.borderColor=a.color}
                 onMouseOut={e=>e.currentTarget.style.borderColor='var(--border)'}
               >
-                {a.isCert ? (
-                  /* Certificate — trophy icon */
-                  <div style={{width:110,height:110,borderRadius:12,flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center',background:`linear-gradient(135deg,${a.color}22,${a.color}44)`,boxShadow:`0 0 25px ${a.color}50`,border:`2px solid ${a.color}`,fontSize:'3.5rem'}}>
-                    🏆
+                {/* Image area */}
+                {a.type === 'badge' ? (
+                  /* Round badge */
+                  <div style={{width:130,height:130,borderRadius:'50%',flexShrink:0,overflow:'hidden',display:'flex',alignItems:'center',justifyContent:'center',background:'#1a0a3a',boxShadow:`0 0 35px ${a.color}90`,border:`3px solid ${a.color}`}}>
+                    <img src={a.badge} alt={a.title} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}}/>
                   </div>
                 ) : (
-                  /* Badge — circular image */
-                  <div style={{width:120,height:120,borderRadius:'50%',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center',background:'#1a0a3a',boxShadow:`0 0 30px ${a.color}90`,border:`3px solid ${a.color}`,padding:5,overflow:'hidden'}}>
-                    <img src={a.badge} alt={a.title} style={{width:'100%',height:'100%',objectFit:'contain',borderRadius:'50%'}}/>
+                  /* Certificate — rectangular with rounded corners */
+                  <div style={{width:200,height:130,borderRadius:10,flexShrink:0,overflow:'hidden',boxShadow:`0 0 25px ${a.color}60`,border:`2px solid ${a.color}`}}>
+                    <img src={a.badge} alt={a.title} style={{width:'100%',height:'100%',objectFit:'cover'}}/>
                   </div>
                 )}
-                <div style={{flex:1}}>
-                  <div style={{display:'flex',alignItems:'center',gap:'0.7rem',flexWrap:'wrap',marginBottom:'0.4rem'}}>
-                    <span style={{fontWeight:700,color:'var(--white)',fontSize:'1rem'}}>{a.title}</span>
-                    <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.7rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.5rem',borderRadius:'4px'}}>{a.date}</span>
+                {/* Text */}
+                <div style={{flex:1,minWidth:220}}>
+                  <div style={{display:'flex',alignItems:'center',gap:'0.8rem',flexWrap:'wrap',marginBottom:'0.5rem'}}>
+                    <span style={{fontWeight:700,color:'var(--white)',fontSize:'1.05rem'}}>{a.title}</span>
+                    <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.7rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>{a.date}</span>
                   </div>
-                  <div style={{fontFamily:"'Fira Code',monospace",fontSize:'0.75rem',color:'var(--purple-lt)',marginBottom:'0.6rem'}}>{a.org}</div>
-                  <p style={{fontSize:'0.83rem',color:'#94a3b8',lineHeight:1.7}}>{a.desc}</p>
+                  <div style={{fontFamily:"'Fira Code',monospace",fontSize:'0.78rem',color:'var(--purple-lt)',marginBottom:'0.7rem'}}>{a.org}</div>
+                  <p style={{fontSize:'0.87rem',color:'#94a3b8',lineHeight:1.75}}>{a.desc}</p>
                 </div>
               </div>
             </FadeIn>
@@ -492,7 +474,6 @@ function Achievements() {
   );
 }
 
-// ── CONTACT ───────────────────────────────────────────────
 function Contact() {
   const [copied, setCopied] = useState(false);
   const copyEmail = () => {
@@ -539,14 +520,12 @@ function Contact() {
   );
 }
 
-// ── FOOTER ────────────────────────────────────────────────
 function Footer() {
   return (
     <footer>&lt; built by <span>Shameem Banu</span> -2026 /&gt;</footer>
   );
 }
 
-// ── MAIN APP ──────────────────────────────────────────────
 export default function App() {
   return (
     <div style={{background:'#080c14',minHeight:'100vh'}}>
