@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './styles/global.css';
- 
+
 const SKILLS = [
   { icon:"🐍", cat:"Programming",  items:["Python","SQL","Java"] },
   { icon:"🤖", cat:"ML & AI",      items:["Scikit-Learn","TensorFlow","Keras","PyTorch","MLflow","OpenCV"] },
   { icon:"🗄️", cat:"Databases",    items:["MySQL","SQLite","Firebase","MongoDB"] },
   { icon:"📊", cat:"Data Visualization",items:["Matplotlib","Tableau","Data Studio","PowerBI"] },
-  { icon:"⚡", cat:"Frameworks",   items:["Flask","Streamlit","Pandas","NumPy","Flutter","Express.js","React","Node.js","Tensorflow","Pytorch"] },
+  { icon:"⚡", cat:"Frameworks",   items:["Flask","Streamlit","Pandas","NumPy","Flutter","Express.js","React","Node.js","TensorFlow","PyTorch"] },
   { icon:"🛠️", cat:"Dev Tools",    items:["GitHub","VS Code","Jupyter","Google Colab","Android Studio","MySQL Workbench"] },
   { icon:"🚀", cat:"Deployment",   items:["Render","Netlify","Streamlit Cloud"] },
   { icon:"✨", cat:"Gen AI Tools", items:["ChatGPT","Claude"] },
@@ -18,10 +18,10 @@ const PROJECTS = [
   { tag:"Healthcare · ML · Live", live:true, name:"Hospital Patient Classification", desc:"ML solution classifying hospital patients via anomaly detection and feature analysis to improve patient categorization.", stack:["Python","Pandas","NumPy","Scikit-Learn","Streamlit"], link:"https://hospital-patient-classification-6exvrmfbjqordnfvyiy7us.streamlit.app/" },
   { tag:"Healthcare · ML · Live", live:true, name:"Smart Hospital Decision Support System", desc:"Intelligent healthcare platform predicting patient readmission, estimating hospital length of stay, assessing respiratory conditions, and analyzing patient outcomes using ML.", stack:["Python","Streamlit","Scikit-learn","Pandas","NumPy","Joblib"], link:"https://smart-hospital-decision-support-system-z2o8mfveatydsd2ahleedc.streamlit.app/" },
   { tag:"Deep Learning · CV · Live", live:true, name:"Face Mask Compliance Screening System", desc:"Computer vision-based face mask detection system that captures images through a browser camera, detects multiple faces, and classifies each as Mask or No Mask with confidence scoring and automated compliance assessment.", stack:["Python","TensorFlow","Keras","OpenCV","NumPy","Streamlit"], link:"https://face-mask-detection-yqum2z76nympbrbx3peqql.streamlit.app/" },
-  { tag:"Deep Learning · YOLO · Live", live:true, name:"Construction Safety Detection", desc:"Intelligent based computer vision app detecting safety helmets and high-visibility vests in construction-site images using a trained YOLO11 object detection model with interactive safety assessment dashboard.", stack:["Python","YOLO11","Ultralytics","PyTorch","NumPy","Streamlit"], link:"https://construction-site-safety-detection-8bug9vq32vm8sla3yperfw.streamlit.app/" },
+  { tag:"Deep Learning · YOLO · Live", live:true, name:"Construction Safety Detection", desc:"AI-powered computer vision app detecting safety helmets and high-visibility vests in construction-site images using a trained YOLO11 object detection model with interactive safety assessment dashboard.", stack:["Python","YOLO11","Ultralytics","PyTorch","NumPy","Streamlit"], link:"https://construction-site-safety-detection-8bug9vq32vm8sla3yperfw.streamlit.app/" },
   { tag:"Mobile App · Flutter · Firebase", live:false, name:"Campus Polling App", desc:"Cross-platform mobile polling app for university communities with real-time vote tallying using Firebase backend.", stack:["Flutter","Firebase","Dart"], link:"https://github.com/shameee09" },
   { tag:"MERN Stack · Web", live:false, name:"To-Do List App", desc:"Full-featured task management app with add, edit, delete and mark-complete functionality with persistent state management.", stack:["React","JavaScript","CSS"], link:"https://github.com/shameee09" },
-  { tag:"Mobile App ", live:false, name:"Intelligent Fashion Recommendation App", desc:"Flutter app giving outfit suggestions based on user mood (Hugging Face) and horoscope (Aztro API) with e-commerce features.", stack:["Flutter","Firebase","Hugging Face API","Aztro API"], link:"https://github.com/shameee09" },
+  { tag:"Mobile App · Gen AI", live:false, name:"Intelligent Fashion Recommendation App", desc:"Flutter app giving outfit suggestions based on user mood (Hugging Face) and horoscope (Aztro API) with e-commerce features.", stack:["Flutter","Firebase","Hugging Face API","Aztro API"], link:"https://github.com/shameee09" },
 ];
 
 const EDUCATION = [
@@ -44,6 +44,25 @@ const ACHIEVEMENTS = [
     desc:"Awarded the Spark Learner Badge (Level I) for demonstrating dedication and progress in the Applied AI & Data Science program.",
     color:"#7c3aed",
     badge:"/spark-badge.jpeg",
+    isCert:false,
+  },
+  {
+    title:"Growth Mover — Level II",
+    org:"Hope Artificial Intelligence Pvt. Ltd.",
+    date:"2026",
+    desc:"Awarded the Growth Mover Badge (Level II) for demonstrating consistent growth, active participation, and advancing skills in the Applied AI & Data Science program.",
+    color:"#f59e0b",
+    badge:"/growth-badge.png",
+    isCert:false,
+  },
+  {
+    title:"Certificate of Excellence",
+    org:"Hope Artificial Intelligence Pvt. Ltd. · ISO 9001:2015 Certified",
+    date:"2026",
+    desc:"Awarded Certificate of Excellence in recognition of exceptional contribution in presenting 'AI in Healthcare' — Smart Hospital Decision Support System Machine Learning Project. Certificate ID: HOPEAIDP046",
+    color:"#0ea5e9",
+    badge:null,
+    isCert:true,
   },
 ];
 
@@ -381,13 +400,12 @@ function Education() {
                   <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>1 Million Prompters — AI Prompt Engineering</span>
                   <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>July 2026</span>
                 </div>
-                <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.6rem',fontFamily:"'Fira Code',monospace"}}>Dubai Future Foundation · Dubai Centre for AI</div>
-                <ul style={{listStyle:'none'}}>
-                  {[
-                    "Completed the One Million Prompters initiative by HH Sheikh Hamdan bin Mohammed bin Rashid Al Maktoum, Crown Prince of Dubai.",
-                    "Focused on developing prompt engineering skills for AI systems.",
-                    "Aligned with the Dubai Universal Blueprint for Artificial Intelligence.",
-                  ].map((p,i) => (
+                <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.3rem',fontFamily:"'Fira Code',monospace",display:'flex',alignItems:'center',gap:'0.6rem',flexWrap:'wrap'}}>
+                  Dubai Future Foundation · Dubai Centre for AI
+                  <a href="https://omp.dub.ai/certificate/JaDlCRKlRP1S" target="_blank" rel="noreferrer" style={{fontSize:'0.7rem',color:'var(--cyan)',border:'1px solid var(--cyan)',padding:'0.1rem 0.5rem',borderRadius:'4px',textDecoration:'none'}}>View Certificate →</a>
+                </div>
+                <ul style={{listStyle:'none',marginTop:'0.4rem'}}>
+                  {["Completed the One Million Prompters initiative by HH Sheikh Hamdan bin Mohammed bin Rashid Al Maktoum, Crown Prince of Dubai.","Focused on developing prompt engineering skills for AI systems.","Aligned with the Dubai Universal Blueprint for Artificial Intelligence."].map((p,i) => (
                     <li key={i} style={{display:'flex',gap:'0.6rem',color:'#94a3b8',fontSize:'0.83rem',lineHeight:1.7,marginBottom:'0.15rem'}}>
                       <span style={{color:'var(--cyan)',flexShrink:0}}>▸</span>{p}
                     </li>
@@ -401,20 +419,18 @@ function Education() {
                   <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>Generative AI Essentials: Using LLMs to Work with Data</span>
                   <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>August 2026</span>
                 </div>
-                <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.6rem',fontFamily:"'Fira Code',monospace"}}>IBM SkillsBuild</div>
-                <ul style={{listStyle:'none'}}>
-                  {[
-                    "Completed IBM SkillsBuild learning plan focused on Generative AI and Large Language Models.",
-                    "Gained foundational knowledge of working with data using AI and LLM-based approaches.",
-                    "Earned an IBM SkillsBuild digital credential and badge.",
-                  ].map((p,i) => (
+                <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.3rem',fontFamily:"'Fira Code',monospace",display:'flex',alignItems:'center',gap:'0.6rem',flexWrap:'wrap'}}>
+                  IBM SkillsBuild
+                  <a href="https://www.credly.com/badges/7586ecc7-bce5-45b2-902d-7e425d72988b/public_url" target="_blank" rel="noreferrer" style={{fontSize:'0.7rem',color:'var(--cyan)',border:'1px solid var(--cyan)',padding:'0.1rem 0.5rem',borderRadius:'4px',textDecoration:'none'}}>View Credential →</a>
+                </div>
+                <ul style={{listStyle:'none',marginTop:'0.4rem'}}>
+                  {["Completed IBM SkillsBuild learning plan focused on Generative AI and Large Language Models.","Gained foundational knowledge of working with data using AI and LLM-based approaches.","Earned an IBM SkillsBuild digital credential and badge."].map((p,i) => (
                     <li key={i} style={{display:'flex',gap:'0.6rem',color:'#94a3b8',fontSize:'0.83rem',lineHeight:1.7,marginBottom:'0.15rem'}}>
                       <span style={{color:'var(--cyan)',flexShrink:0}}>▸</span>{p}
                     </li>
                   ))}
                 </ul>
               </div>
-
             </div>
           </FadeIn>
 
@@ -444,41 +460,28 @@ function Achievements() {
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(320px,1fr))',gap:'1.5rem'}}>
           {ACHIEVEMENTS.map((a,i) => (
             <FadeIn key={a.title} delay={i*0.1}>
-              <div style={{background:'var(--card)',border:'1px solid var(--border)',borderRadius:14,padding:'2rem',display:'flex',gap:'1.6rem',alignItems:'center',transition:'border-color .25s'}}
-                onMouseOver={e=>e.currentTarget.style.borderColor='var(--purple)'}
+              <div style={{background:'var(--card)',border:'1px solid var(--border)',borderRadius:14,padding:'2rem',display:'flex',gap:'1.6rem',alignItems:'center',transition:'border-color .25s',height:'100%'}}
+                onMouseOver={e=>e.currentTarget.style.borderColor=a.color}
                 onMouseOut={e=>e.currentTarget.style.borderColor='var(--border)'}
               >
-                {/* Badge — fixed size, no crop */}
-                <div style={{
-                  width:120,height:120,
-                  borderRadius:'50%',
-                  flexShrink:0,
-                  display:'flex',
-                  alignItems:'center',
-                  justifyContent:'center',
-                  background:'#1a0a3a',
-                  boxShadow:`0 0 30px ${a.color}90`,
-                  border:`3px solid ${a.color}`,
-                  padding:6,
-                }}>
-                  <img
-                    src={a.badge}
-                    alt={a.title}
-                    style={{
-                      width:'100%',
-                      height:'100%',
-                      objectFit:'contain',
-                      borderRadius:'50%',
-                    }}
-                  />
-                </div>
+                {a.isCert ? (
+                  /* Certificate — trophy icon */
+                  <div style={{width:110,height:110,borderRadius:12,flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center',background:`linear-gradient(135deg,${a.color}22,${a.color}44)`,boxShadow:`0 0 25px ${a.color}50`,border:`2px solid ${a.color}`,fontSize:'3.5rem'}}>
+                    🏆
+                  </div>
+                ) : (
+                  /* Badge — circular image */
+                  <div style={{width:120,height:120,borderRadius:'50%',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center',background:'#1a0a3a',boxShadow:`0 0 30px ${a.color}90`,border:`3px solid ${a.color}`,padding:5,overflow:'hidden'}}>
+                    <img src={a.badge} alt={a.title} style={{width:'100%',height:'100%',objectFit:'contain',borderRadius:'50%'}}/>
+                  </div>
+                )}
                 <div style={{flex:1}}>
                   <div style={{display:'flex',alignItems:'center',gap:'0.7rem',flexWrap:'wrap',marginBottom:'0.4rem'}}>
                     <span style={{fontWeight:700,color:'var(--white)',fontSize:'1rem'}}>{a.title}</span>
                     <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.7rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.5rem',borderRadius:'4px'}}>{a.date}</span>
                   </div>
-                  <div style={{fontFamily:"'Fira Code',monospace",fontSize:'0.78rem',color:'var(--purple-lt)',marginBottom:'0.6rem'}}>{a.org}</div>
-                  <p style={{fontSize:'0.85rem',color:'#94a3b8',lineHeight:1.7}}>{a.desc}</p>
+                  <div style={{fontFamily:"'Fira Code',monospace",fontSize:'0.75rem',color:'var(--purple-lt)',marginBottom:'0.6rem'}}>{a.org}</div>
+                  <p style={{fontSize:'0.83rem',color:'#94a3b8',lineHeight:1.7}}>{a.desc}</p>
                 </div>
               </div>
             </FadeIn>
