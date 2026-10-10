@@ -262,29 +262,6 @@ function Experience() {
             </div>
           </div>
         </FadeIn>
-        <FadeIn delay={0.2}>
-          <div className="exp-card">
-            <div className="exp-header">
-              <div>
-                <div className="exp-role">Data Analytics Virtual Job Simulation</div>
-                <div className="exp-company">Deloitte Australia — via Forage</div>
-              </div>
-              <span className="exp-badge">June 2026</span>
-            </div>
-            <p style={{fontSize:'0.85rem',color:'#94a3b8',marginBottom:'0.8rem',lineHeight:1.7}}>Completed Deloitte Australia's Data Analytics Job Simulation offered through Forage. Worked on:</p>
-            <ul className="exp-list">
-              <li>Analyzed telemetry data using Tableau and built interactive dashboards to visualize operational insights.</li>
-              <li>Identified operational downtime trends and generated actionable business insights from raw data.</li>
-              <li>Applied forensic data analysis techniques to investigate gender pay equality across business units.</li>
-            </ul>
-            <div>
-              <p style={{fontSize:'0.72rem',color:'var(--muted)',marginBottom:'0.5rem',fontFamily:"'Fira Code',monospace",textTransform:'uppercase',letterSpacing:'0.08em'}}>Skills Gained</p>
-              <div className="pill-wrap">
-                {["Data Analysis","Tableau","Dashboard Development","Forensic Data Investigation","Business Insights"].map(t => <Pill key={t} text={t}/>)}
-              </div>
-            </div>
-          </div>
-        </FadeIn>
       </div>
     </section>
   );
@@ -437,7 +414,7 @@ function Education() {
               <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem'}}>
                 <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
                   <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>Claude 101 — Introduction to Claude AI</span>
-                  <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>2026</span>
+                  <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>October 2026</span>
                 </div>
                 <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.3rem',fontFamily:"'Fira Code',monospace",display:'flex',alignItems:'center',gap:'0.6rem',flexWrap:'wrap'}}>
                   Anthropic
