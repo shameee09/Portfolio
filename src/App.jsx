@@ -3,20 +3,21 @@ import './styles/global.css';
 
 const SKILLS = [
   { icon:"🐍", cat:"Programming",  items:["Python","SQL","Java"] },
-  { icon:"🤖", cat:"ML & AI",      items:["Scikit-Learn","TensorFlow","Keras","PyTorch","MLflow","OpenCV"] },
+  { icon:"🤖", cat:"ML & AI",      items:["Scikit-Learn","TensorFlow","Keras","PyTorch","OpenCV"] },
   { icon:"🗄️", cat:"Databases",    items:["MySQL","SQLite","Firebase","MongoDB"] },
   { icon:"📊", cat:"Data Visualization",items:["Matplotlib","Tableau","Data Studio","PowerBI"] },
   { icon:"⚡", cat:"Frameworks",   items:["Flask","Streamlit","Pandas","NumPy","Flutter","Express.js","React","Node.js","TensorFlow","PyTorch"] },
   { icon:"🛠️", cat:"Dev Tools",    items:["GitHub","VS Code","Jupyter","Google Colab","Android Studio","MySQL Workbench"] },
   { icon:"🚀", cat:"Deployment",   items:["Render","Netlify","Streamlit Cloud"] },
-  { icon:"✨", cat:"Gen AI Tools", items:["ChatGPT","Claude"] },
+  { icon:"✨", cat:"Gen AI Tools", items:["ChatGPT","Claude","Google Gemini API"] },
   { icon:"🧠", cat:"Soft Skills",  items:["Problem Solving","Communication","Teamwork","Adaptability"] },
 ];
 
 const PROJECTS = [
-  { tag:"CRM · ML · Live", live:true, name:"Telecom Customer Churn Prediction", desc:"End-to-end ML web app predicting telecom customer churn with AI-driven retention strategies based on risk classification.", stack:["Python","Flask","Scikit-learn","SQLite","Groq API"], link:"https://telecom-churn-prediction-system.onrender.com/login" },
+  { tag:"ML · Flask · Live", live:true, name:"Telecom Customer Churn Prediction", desc:"End-to-end ML web app predicting telecom customer churn with AI-driven retention strategies based on risk classification.", stack:["Python","Flask","Scikit-learn","SQLite","Groq API"], link:"https://telecom-churn-prediction-system.onrender.com/login" },
   { tag:"Healthcare · ML · Live", live:true, name:"Hospital Patient Classification", desc:"ML solution classifying hospital patients via anomaly detection and feature analysis to improve patient categorization.", stack:["Python","Pandas","NumPy","Scikit-Learn","Streamlit"], link:"https://hospital-patient-classification-6exvrmfbjqordnfvyiy7us.streamlit.app/" },
   { tag:"Healthcare · ML · Live", live:true, name:"Smart Hospital Decision Support System", desc:"Intelligent healthcare platform predicting patient readmission, estimating hospital length of stay, assessing respiratory conditions, and analyzing patient outcomes using ML.", stack:["Python","Streamlit","Scikit-learn","Pandas","NumPy","Joblib"], link:"https://smart-hospital-decision-support-system-z2o8mfveatydsd2ahleedc.streamlit.app/" },
+  { tag:"Gen AI · Flask · Live", live:true, name:"Customer Service Assistant", desc:"Generative AI-powered customer service chatbot using Google Gemini API to handle customer queries, shopping assistance, product inquiries, order support, delivery, returns, replacements, refunds, and general customer interactions.", stack:["Python","Google Gemini API","Flask","SQLite","HTML","CSS","JavaScript"], link:"https://customer-service-assistant-851m.onrender.com" },
   { tag:"Deep Learning · CV · Live", live:true, name:"Face Mask Compliance Screening System", desc:"Computer vision-based face mask detection system that captures images through a browser camera, detects multiple faces, and classifies each as Mask or No Mask with confidence scoring and automated compliance assessment.", stack:["Python","TensorFlow","Keras","OpenCV","NumPy","Streamlit"], link:"https://face-mask-detection-yqum2z76nympbrbx3peqql.streamlit.app/" },
   { tag:"Deep Learning · YOLO · Live", live:true, name:"Construction Safety Detection", desc:"AI-powered computer vision app detecting safety helmets and high-visibility vests in construction-site images using a trained YOLO11 object detection model with interactive safety assessment dashboard.", stack:["Python","YOLO11","Ultralytics","PyTorch","NumPy","Streamlit"], link:"https://construction-site-safety-detection-8bug9vq32vm8sla3yperfw.streamlit.app/" },
   { tag:"Mobile App · Flutter · Firebase", live:false, name:"Campus Polling App", desc:"Cross-platform mobile polling app for university communities with real-time vote tallying using Firebase backend.", stack:["Flutter","Firebase","Dart"], link:"https://github.com/shameee09" },
@@ -33,7 +34,6 @@ const CONTACTS = [
   { icon:"📧", lbl:"Email",    val:"shameembanuinfotech@gmail.com", href:"mailto:shameembanuinfotech@gmail.com" },
   { icon:"💼", lbl:"LinkedIn", val:"linkedin.com/in/shameem--banu",  href:"https://www.linkedin.com/in/shameem--banu" },
   { icon:"🐙", lbl:"GitHub",   val:"github.com/shameee09",           href:"https://github.com/shameee09" },
-  //{ icon:"📍", lbl:"Location", val:"Villupuram, Tamil Nadu, India",   href:null },
 ];
 
 const ACHIEVEMENTS = [
@@ -195,7 +195,7 @@ function Hero() {
           <a href="https://www.linkedin.com/in/shameem--banu" target="_blank" rel="noreferrer" className="btn-ghost">LinkedIn</a>
         </div>
         <div className="stats-row">
-          {[["8+","Projects Built"],["1","Internship"],["10+","Technologies"],["2027","Graduating"]].map(([n,l]) => (
+          {[["9+","Projects Built"],["1","Internship"],["10+","Technologies"],["2027","Graduating"]].map(([n,l]) => (
             <div className="stat" key={l}>
               <div className="stat-num"><span>{n}</span></div>
               <div className="stat-lbl">{l}</div>
@@ -290,10 +290,24 @@ function Experience() {
   );
 }
 
+// ── PROJECTS ──────────────────────────────────────────────
 function Projects() {
   const [filter, setFilter] = useState('All');
-  const filters = ['All','Machine Learning','Deep Learning','Mobile','Web'];
-  const filtered = filter==='All' ? PROJECTS : PROJECTS.filter(p => p.tag.toLowerCase().includes(filter.toLowerCase()));
+
+  // ✅ Filter logic fixed — maps button label to tag keyword
+  const filterMap = {
+    'All': null,
+    'ML': 'ml',
+    'Gen AI': 'gen ai',
+    'Deep Learning': 'deep learning',
+    'Mobile': 'mobile',
+    'Web': 'web',
+  };
+  const filters = Object.keys(filterMap);
+  const filtered = filterMap[filter] === null
+    ? PROJECTS
+    : PROJECTS.filter(p => p.tag.toLowerCase().includes(filterMap[filter]));
+
   return (
     <section id="projects" className="sec sec-alt">
       <div className="sec-inner">
@@ -364,6 +378,8 @@ function Education() {
           <FadeIn delay={0.2}>
             <div className="act-card">
               <h4 style={{color:'var(--cyan)',marginBottom:'1rem',fontSize:'0.75rem',letterSpacing:'0.12em',textTransform:'uppercase',fontFamily:"'Fira Code',monospace"}}>🏆 Certifications</h4>
+
+              {/* Deloitte */}
               <div style={{marginBottom:'1.5rem'}}>
                 <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
                   <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>Deloitte Australia – Data Analytics Job Simulation</span>
@@ -378,6 +394,8 @@ function Education() {
                   ))}
                 </ul>
               </div>
+
+              {/* 1 Million Prompters */}
               <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem',marginBottom:'1.5rem'}}>
                 <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
                   <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>1 Million Prompters — AI Prompt Engineering</span>
@@ -395,7 +413,9 @@ function Education() {
                   ))}
                 </ul>
               </div>
-              <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem'}}>
+
+              {/* IBM SkillsBuild */}
+              <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem',marginBottom:'1.5rem'}}>
                 <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
                   <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>Generative AI Essentials: Using LLMs to Work with Data</span>
                   <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>August 2026</span>
@@ -412,6 +432,30 @@ function Education() {
                   ))}
                 </ul>
               </div>
+
+              {/* Claude 101 */}
+              <div style={{borderTop:'1px solid var(--border)',paddingTop:'1.2rem'}}>
+                <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'0.5rem',marginBottom:'0.3rem'}}>
+                  <span style={{fontWeight:700,color:'var(--white)',fontSize:'0.92rem'}}>Claude 101 — Introduction to Claude AI</span>
+                  <span style={{fontFamily:"'Fira Code',monospace",fontSize:'0.72rem',color:'var(--green)',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',padding:'0.15rem 0.6rem',borderRadius:'4px'}}>2026</span>
+                </div>
+                <div style={{fontSize:'0.8rem',color:'var(--purple-lt)',marginBottom:'0.3rem',fontFamily:"'Fira Code',monospace",display:'flex',alignItems:'center',gap:'0.6rem',flexWrap:'wrap'}}>
+                  Anthropic
+                  <a href="https://verify.skilljar.com/c/hd7usy6nbei8" target="_blank" rel="noreferrer" style={{fontSize:'0.7rem',color:'var(--cyan)',border:'1px solid var(--cyan)',padding:'0.1rem 0.5rem',borderRadius:'4px',textDecoration:'none'}}>View Certificate →</a>
+                </div>
+                <ul style={{listStyle:'none',marginTop:'0.4rem'}}>
+                  {[
+                    "Completed the official Claude 101 course by Anthropic.",
+                    "Gained foundational knowledge of Claude AI capabilities, prompt engineering, and responsible AI usage.",
+                    "Earned a verifiable certificate of completion.",
+                  ].map((p,i) => (
+                    <li key={i} style={{display:'flex',gap:'0.6rem',color:'#94a3b8',fontSize:'0.83rem',lineHeight:1.7,marginBottom:'0.15rem'}}>
+                      <span style={{color:'var(--cyan)',flexShrink:0}}>▸</span>{p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
             </div>
           </FadeIn>
           <FadeIn delay={0.3}>
@@ -427,7 +471,6 @@ function Education() {
   );
 }
 
-// ── ACHIEVEMENTS ──────────────────────────────────────────
 function Achievements() {
   return (
     <section id="achievements" className="sec sec-alt">
@@ -444,19 +487,15 @@ function Achievements() {
                 onMouseOver={e=>e.currentTarget.style.borderColor=a.color}
                 onMouseOut={e=>e.currentTarget.style.borderColor='var(--border)'}
               >
-                {/* Image area */}
                 {a.type === 'badge' ? (
-                  /* Round badge */
                   <div style={{width:130,height:130,borderRadius:'50%',flexShrink:0,overflow:'hidden',display:'flex',alignItems:'center',justifyContent:'center',background:'#1a0a3a',boxShadow:`0 0 35px ${a.color}90`,border:`3px solid ${a.color}`}}>
                     <img src={a.badge} alt={a.title} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}}/>
                   </div>
                 ) : (
-                  /* Certificate — rectangular with rounded corners */
                   <div style={{width:200,height:130,borderRadius:10,flexShrink:0,overflow:'hidden',boxShadow:`0 0 25px ${a.color}60`,border:`2px solid ${a.color}`}}>
                     <img src={a.badge} alt={a.title} style={{width:'100%',height:'100%',objectFit:'cover'}}/>
                   </div>
                 )}
-                {/* Text */}
                 <div style={{flex:1,minWidth:220}}>
                   <div style={{display:'flex',alignItems:'center',gap:'0.8rem',flexWrap:'wrap',marginBottom:'0.5rem'}}>
                     <span style={{fontWeight:700,color:'var(--white)',fontSize:'1.05rem'}}>{a.title}</span>
